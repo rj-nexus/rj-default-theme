@@ -1,0 +1,150 @@
+<div align="center">
+
+# RJ Default
+
+**The official default theme for [RJ Nexus](https://github.com/rj-nexus/rj-nexus)**
+
+Clean, minimal and builder-first. Designed to work seamlessly with **RJBuilder**, the drag-and-drop page builder included with RJ Nexus.
+
+![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)
+![RJ Nexus](https://img.shields.io/badge/RJ%20Nexus-v1.9.0-blue)
+![PHP](https://img.shields.io/badge/PHP-%3E%3D8.2-777BB4?logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+</div>
+
+---
+
+## Features
+
+- **Builder-first:** works with RJBuilder headers, footers, pages and popups.
+- **Single post:** hero section, featured image, tags and related posts.
+- **Single page:** full-width builder blocks or classic content.
+- **Archive:** grid layout with pagination and category filter.
+- **Blog cards:** reusable loop card partial.
+- **Popup support:** automatic popup rendering from Popup Builder.
+- **Form handling:** AJAX form submission with validation.
+- **Responsive:** optimized for mobile, tablet and desktop.
+
+## Requirements
+
+| Requirement | Version |
+|-------------|---------|
+| RJ Nexus | `>= 1.9.0` |
+| PHP | `>= 8.2` |
+| Laravel | `12` |
+
+## Installation
+
+### From the admin panel
+
+1. Go to **Appearance > Themes > Browse Community**.
+2. Find **RJ Default** in the registry.
+3. Click **Install**, then **Activate**.
+
+### Manual upload
+
+1. Download the latest release ZIP.
+2. Go to **Appearance > Themes > Upload Theme**.
+3. Select the ZIP file.
+4. Click **Activate**.
+
+### From a GitHub URL
+
+1. Go to **Appearance > Themes > Browse Community**.
+2. Paste the repository URL into the **From GitHub** field.
+3. Click **Install**.
+
+## Structure
+
+```text
+rj-theme-default/
+├── theme.json                  # theme manifest
+├── README.md
+├── LICENSE
+├── screenshot.png
+├── views/
+│   ├── layout.blade.php        # base HTML layout
+│   ├── single-post.blade.php
+│   ├── single-page.blade.php
+│   ├── archive.blade.php
+│   └── partials/
+│       ├── popup.blade.php
+│       └── loop-card.blade.php
+└── assets/
+    ├── css/
+    └── js/
+```
+
+### Views
+
+| File | Purpose |
+|------|---------|
+| `layout.blade.php` | Base HTML: head, body, form handler and popup include |
+| `single-post.blade.php` | Individual blog post view |
+| `single-page.blade.php` | Static page view (supports builder blocks) |
+| `archive.blade.php` | Blog archive with pagination |
+| `partials/loop-card.blade.php` | Reusable post card |
+| `partials/popup.blade.php` | Popup Builder integration |
+
+### Assets
+
+Add your CSS and JS files to `assets/css/` and `assets/js/`, then register them in `theme.json`:
+
+```json
+{
+    "assets": {
+        "css": ["assets/css/style.css"],
+        "js": ["assets/js/script.js"]
+    }
+}
+```
+
+RJ Nexus injects them into the layout head and body automatically.
+
+## Customization
+
+### Colors and fonts
+
+RJ Default uses the **Global Colors** and **Global Fonts** from your RJ Nexus settings. No code changes are needed. Update them from **Settings > Global Styles**.
+
+### Child themes
+
+Create a child theme by adding a `parent` field to your `theme.json`:
+
+```json
+{
+    "name": "My Child Theme",
+    "slug": "my-child-theme",
+    "parent": "rj-default",
+    "version": "1.0.0",
+    "author": "Your Name"
+}
+```
+
+Child themes override parent views and assets. Place the child theme in `rj-content/themes/my-child-theme/`.
+
+## Development
+
+### Local workflow
+
+1. Edit the views directly in `themes/default/views/`.
+2. Refresh your browser. There is no build step.
+3. To test it as a standalone theme, activate it from **Appearance > Themes**.
+
+### Publishing to the registry
+
+1. Create a GitHub release with a ZIP asset.
+2. Add your repository to `rj-registration`.
+3. Wait for review.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
+
+## License
+
+Released under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Credits
+
+Built for [RJ Nexus](https://github.com/rj-nexus/rj-nexus). Font: Inter (via Google Fonts).
